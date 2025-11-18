@@ -187,6 +187,74 @@ def create_appointment(payload: AppointmentCreate):
     return {"id": aid, "status": "pending"}
 
 
+# --------------------------------------------------
+# Development utility: seed sample data
+# --------------------------------------------------
+class SeedResponse(BaseModel):
+    hospitals: int
+    clinics: int
+    doctors: int
+
+
+def _seed_dev_data() -> SeedResponse:
+    """Insert a small set of sample hospitals, clinics, and doctors if empty."""
+    # Only seed if there are no hospitals yet
+    existing_hospitals = get_documents("hospital")
+    if existing_hospitals:
+        return SeedResponse(hospitals=0, clinics=0, doctors=0)
+
+    # Hospitals
+    h_ids: List[str] = []
+    demo_hospitals = [
+        {"name": "مستشفى الشفاء", "city": "الرياض", "address": "حي العليا، شارع رقم 10", "phone": "+966500000001"},
+        {"name": "مستشفى الندى", "city": "جدة", "address": "حي الروضة، طريق الملك", "phone": "+966500000002"},
+        {"name": "مركز الرحمة الطبي", "city": "الدمام", "address": "حي المزروعية، شارع الأمير", "phone": "+966500000003"},
+    ]
+    for h in demo_hospitals:
+        h_id = create_document("hospital", h)
+        h_ids.append(h_id)
+
+    # Clinics per hospital
+    clinic_ids: List[str] = []
+    demo_clinics = [
+        (h_ids[0], [
+            {"name": "قسم الباطنية", "specialties": ["باطنية", "سكري"]},
+            {"name": "عيادة القلب", "specialties": ["قلب"]},
+        ]),
+        (h_ids[1], [
+            {"name": "عيادة الأطفال", "specialties": ["أطفال", "تغذية"]},
+            {"name": "عيادة العظام", "specialties": ["عظام"]},
+        ]),
+        (h_ids[2], [
+            {"name": "عيادة الأسنان", "specialties": ["أسنان"]},
+        ]),
+    ]
+    for hid, clinics in demo_clinics:
+        for c in clinics:
+            cid = create_document("clinic", {"hospital_id": hid, **c})
+            clinic_ids.append(cid)
+
+    # Doctors per clinic
+    demo_doctors = [
+        {"clinic_id": clinic_ids[0], "name": "د. أحمد السالم", "specialty": "باطنية", "days_available": ["Sat","Mon","Wed"], "time_slots": ["09:00","09:30","10:00","10:30","11:00"]},
+        {"clinic_id": clinic_ids[0], "name": "د. منى علي", "specialty": "سكري", "days_available": ["Sun","Tue"], "time_slots": ["12:00","12:30","13:00","13:30","14:00"]},
+        {"clinic_id": clinic_ids[1], "name": "د. خالد مراد", "specialty": "قلب", "days_available": ["Mon","Thu"], "time_slots": ["09:00","09:30","10:00"]},
+        {"clinic_id": clinic_ids[2], "name": "د. سارة يوسف", "specialty": "أطفال", "days_available": ["Sat","Sun","Mon"], "time_slots": ["11:00","11:30","12:00"]},
+        {"clinic_id": clinic_ids[3], "name": "د. فهد السبيعي", "specialty": "عظام", "days_available": ["Tue","Wed"], "time_slots": ["09:00","09:30","10:00","10:30"]},
+        {"clinic_id": clinic_ids[4], "name": "د. ليلى القحطاني", "specialty": "أسنان", "days_available": ["Sat","Thu"], "time_slots": ["09:00","09:30","10:00","10:30","11:00","11:30"]},
+    ]
+    for d in demo_doctors:
+        create_document("doctor", d)
+
+    return SeedResponse(hospitals=len(h_ids), clinics=len(clinic_ids), doctors=len(demo_doctors))
+
+
+@app.post("/api/seed", response_model=SeedResponse)
+def seed_dev_data():
+    """Seed the database with sample data. Safe to call multiple times."""
+    return _seed_dev_data()
+
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))

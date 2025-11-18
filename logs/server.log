@@ -1,19 +1,19 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [412] using StatReload
-INFO:     Started server process [414]
+INFO:     Started reloader process [530] using StatReload
+INFO:     Started server process [532]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:34266 - "HEAD / HTTP/1.1" 405 Method Not Allowed
-INFO:     172.20.0.1:34268 - "GET /api/doctors HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34276 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34276 - "GET /api/doctors HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34268 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34268 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34268 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34292 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34292 - "GET /api/doctors HTTP/1.1" 200 OK
-INFO:     172.20.0.1:60742 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:34292 - "GET /api/doctors HTTP/1.1" 200 OK
-INFO:     172.20.0.1:60742 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:60742 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57152 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:57158 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57164 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57158 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57164 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57158 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57158 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47994 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:48002 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47994 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:48002 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47994 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47994 - "GET /api/hospitals HTTP/1.1" 200 OK
