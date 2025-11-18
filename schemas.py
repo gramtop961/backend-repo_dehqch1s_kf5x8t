@@ -12,9 +12,9 @@ Model name is converted to lowercase for the collection name:
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, List
 
-# Example schemas (replace with your own):
+# Example schemas (you can still use these if needed):
 
 class User(BaseModel):
     """
@@ -38,11 +38,38 @@ class Product(BaseModel):
     category: str = Field(..., description="Product category")
     in_stock: bool = Field(True, description="Whether product is in stock")
 
-# Add your own schemas here:
+# --------------------------------------------------
+# Medical booking app schemas (collections)
 # --------------------------------------------------
 
-# Note: The Flames database viewer will automatically:
-# 1. Read these schemas from GET /schema endpoint
-# 2. Use them for document validation when creating/editing
-# 3. Handle all database operations (CRUD) directly
-# 4. You don't need to create any database endpoints!
+class Hospital(BaseModel):
+    name: str = Field(..., description="Hospital name")
+    city: str = Field(..., description="City")
+    address: str = Field(..., description="Full address")
+    phone: Optional[str] = Field(None, description="Contact phone number")
+
+class Clinic(BaseModel):
+    hospital_id: str = Field(..., description="Related hospital ObjectId as string")
+    name: str = Field(..., description="Clinic/Department name")
+    specialties: List[str] = Field(default_factory=list, description="List of specialties")
+
+class Doctor(BaseModel):
+    clinic_id: str = Field(..., description="Related clinic ObjectId as string")
+    name: str = Field(..., description="Doctor's full name")
+    specialty: str = Field(..., description="Doctor specialty")
+    days_available: List[str] = Field(default_factory=list, description="Days doctor works e.g., ['Sat','Sun','Mon']")
+    time_slots: List[str] = Field(default_factory=lambda: [
+        "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+        "12:00", "12:30", "13:00", "13:30", "14:00", "14:30"
+    ], description="Daily time slots")
+
+class Appointment(BaseModel):
+    patient_name: str = Field(..., description="Patient full name")
+    patient_phone: str = Field(..., description="Patient contact phone")
+    doctor_id: str = Field(..., description="Doctor ObjectId as string")
+    date: str = Field(..., description="Date in YYYY-MM-DD format")
+    time_slot: str = Field(..., description="Selected time slot e.g., 10:30")
+    status: str = Field("pending", description="Status: pending/confirmed/cancelled")
+
+# Note: The Flames database viewer can read these schemas from GET /schema endpoint
+# and help with ad-hoc CRUD if needed.
