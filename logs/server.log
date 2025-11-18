@@ -1,11 +1,31 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [272] using StatReload
-INFO:     Started server process [274]
+INFO:     Started reloader process [317] using StatReload
+INFO:     Started server process [319]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:54342 - "HEAD / HTTP/1.1" 405 Method Not Allowed
-INFO:     172.20.0.1:54344 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:54344 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:54348 - "GET /api/hospitals HTTP/1.1" 200 OK
-INFO:     172.20.0.1:54348 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46898 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:47834 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47848 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47834 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47848 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47848 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47848 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47862 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47862 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58744 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47862 - "GET /api/doctors HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58744 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58744 - "GET /api/hospitals HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7%D8%B3 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60830 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86%D8%A7 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86%D8%A7%D9%86 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86%D8%A7%D9%86+ HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86%D8%A7%D9%86 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60830 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86%D8%A7 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7%D8%B3%D9%86 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60830 - "GET /api/doctors?specialty=%D8%A7%D8%B3 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors?specialty=%D8%A7 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58752 - "GET /api/doctors HTTP/1.1" 200 OK
